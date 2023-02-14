@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM --platform=linux/amd64 ubuntu:latest
  
 RUN apt-get update \
   && apt-get install -y python3-pip python3-dev \
@@ -11,8 +11,8 @@ RUN apt-get install -y curl unzip openjdk-8-jre-headless xvfb libxi6 libgconf-2-
 
 # INSTALL CHROME
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
-RUN apt-get update && apt-get install -y google-chrome-stable
+RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update -qqy --no-install-recommends && apt-get install -qqy --no-install-recommends google-chrome-stable
 
 # INSTALL CHROMEDRIVER
 RUN wget -N https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip -P ~/ \
