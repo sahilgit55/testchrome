@@ -17,6 +17,6 @@ RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.32.2/geckod
 RUN pip3 install selenium==3.0.2
 
 # RUN TEST SCRIPT
-COPY test_selenium.py test_selenium.py
+COPY test.py test.py
 
 CMD ["python3", "test.py"]
