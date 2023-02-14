@@ -10,9 +10,7 @@ RUN apt-get update \
 RUN apt-get install -y curl unzip openjdk-8-jre-headless xvfb libxi6 libgconf-2-4
 
 # INSTALL CHROME
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-RUN apt-get update -qqy --no-install-recommends && apt-get install -qqy --no-install-recommends google-chrome-stable
+RUN apt-get install chromium-browser
 
 # INSTALL CHROMEDRIVER
 RUN wget -N https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip -P ~/ \
